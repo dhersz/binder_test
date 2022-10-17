@@ -27,6 +27,8 @@ jobs:
         with:
           push: true
           tags: ipea/test:latest
+          cache-from: type=local,src=/tmp/renv/cache
+          cache-to: type=local,src=/tmp/renv/cache
 
       - name: List dependencies
         run: |
