@@ -9,6 +9,14 @@
     ]
   },
   "Packages": {
+    "data.table": {
+      "Package": "data.table",
+      "Version": "1.14.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b9b912b41064aaa79270f24d123c887d",
+      "Requirements": []
+    },
     "renv": {
       "Package": "renv",
       "Version": "0.16.0",

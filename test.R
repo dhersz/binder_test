@@ -1,2 +1,4 @@
-a <- data.table::data.table(a = "SUCCESS")
+library(data.table)
+
+a <- data.table(a = "SUCCESS")
 print(a)

@@ -27,3 +27,7 @@ jobs:
         with:
           push: true
           tags: ipea/test:latest
+
+      - name: List dependencies
+        run: |
+          ls /tmp/renv/cache
