@@ -30,7 +30,7 @@ jobs:
 
       - name: Copy dependencies
         run: |
-          docker cp test:/tmp/renv/cache /tmp/renv/cache
+          docker ps
 
       - name: List dependencies
         run: |
