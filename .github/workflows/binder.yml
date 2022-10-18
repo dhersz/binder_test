@@ -28,6 +28,9 @@ jobs:
           push: true
           tags: ipea/test:latest
 
+      - name: List images
+        run: docker ps
+
       - name: List dependencies
         run: |
           ls /tmp/renv/cache
