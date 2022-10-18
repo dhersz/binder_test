@@ -32,7 +32,7 @@ jobs:
         run: docker ps
 
       - name: Copy dependencies
-        run: docker cp buildx:/tmp/renv/cache /tmp/renv/cache
+        run: docker cp $(docker ps -alq):/tmp/renv/cache /tmp/renv/cache
 
       - name: List dependencies
         run: |
