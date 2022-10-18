@@ -31,6 +31,9 @@ jobs:
       - name: List images
         run: docker ps
 
+      - name: Copy dependencies
+        run: docker cp buildkit:/tmp/renv/cache /tmp/renv/cache
+
       - name: List dependencies
         run: |
           ls /tmp/renv/cache
