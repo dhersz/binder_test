@@ -9,6 +9,5 @@ RUN mkdir -p /tmp/renv/cache
 
 RUN Rscript --vanilla -e "install.packages(\"renv\", repos = \"https://cloud.r-project.org/\")"
 
-RUN Rscript -e "renv::restore()"
-
-RUN ls /tmp/renv/cache
+RUN --mount=type=cache,target=/tmp/renv/cache \
+  Rscript -e "renv::restore()"

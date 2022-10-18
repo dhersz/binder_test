@@ -13,14 +13,28 @@ jobs:
         run: |
           mkdir -p /tmp/renv/cache
 
+      - name: List dependencies
+        run: |
+          ls /tmp/renv/cache
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/renv/cache
+          key: ${{ runner.os }}-multi-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-multi-buildx
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          cache-from: type=local,src=/tmp/renv/cache
+          cache-to: type=local,dest=/tmp/renv/cache-new
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -28,12 +42,7 @@ jobs:
           push: true
           tags: ipea/test:latest
 
-      - name: List images
-        run: docker ps
-
-      - name: Copy dependencies
-        run: docker cp $(docker ps -alq):/tmp/renv/cache /tmp/renv/cache
-
-      - name: List dependencies
+      - name: Move cache
         run: |
-          ls /tmp/renv/cache
+          rm -rf /tmp/renv/cache
+          mv /tmp/renv/cache-new /tmp/renv/cache
