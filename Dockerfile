@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1.2
+
 FROM rocker/binder:4.2.1
 ARG NB_USER
 ARG NB_UID
