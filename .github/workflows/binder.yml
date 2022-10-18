@@ -40,7 +40,7 @@ jobs:
           push: true
           tags: ipea/test:latest
           cache-from: type=local,src=/tmp/renv/cache
-          cache-to: type=local,dest=/tmp/renv/cache-new
+          cache-to: type=local,mode=max,dest=/tmp/renv/cache-new
 
       - name: Move cache
         run: |
