@@ -19,9 +19,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-multi-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-multi-buildx
+          key: ${{ runner.os }}-multi-buildx-${{ github.run_id }}
+          restore-keys: ${{ runner.os }}-multi-buildx-
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
